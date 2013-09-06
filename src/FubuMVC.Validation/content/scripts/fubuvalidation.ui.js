@@ -1,4 +1,4 @@
-﻿(function ($, validation) {
+(function ($, validation) {
   var exports = {
     Strategies: {}
   };
@@ -261,7 +261,7 @@
       context.eachError(function (error) {
         error.element.addClass('error');
       });
-    },
+    }
   };
 
   function InlineErrorStrategy() {
@@ -285,20 +285,6 @@
 
         error.element.after(message);
       });
-    }
-  };
-  
-  function FormValidated(notification) {
-    this.notification = notification;
-    this._submit = true;
-  }
-
-  FormValidated.prototype = {
-    preventSubmission: function() {
-      this._submit = false;
-    },
-    shouldSubmit: function() {
-      return this._submit && this.notification.isValid();
     }
   };
 
@@ -325,8 +311,6 @@
       var elements = this.elementsFor(form);
       var notification = form.notification();
       var options = validation.Core.Options.fromForm(form);
-
-      form.trigger('validation:start');
 
       var results = [];
       elements.each(function () {
@@ -452,7 +436,6 @@
   defineCore('ValidationProcessor', ValidationProcessor);
   defineCore('TokenFor', tokenFor);
   defineCore('Controller', ValidationFormController);
-  defineCore('FormValidated', FormValidated);
 
   defineStrategy('Summary', ValidationSummaryStrategy);
   defineStrategy('Highlighting', ElementHighlightingStrategy);
